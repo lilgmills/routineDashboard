@@ -1,0 +1,103 @@
+/* Base styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 1rem;
+    background-color: #fdfdfd;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Header */
+#page-header {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Table styling */
+#routine {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+#routine td {
+    vertical-align: middle;
+}
+
+/* Checkbox style */
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    border: 2px solid #333;
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+    background-color: #fff;
+    line-height: 1;
+}
+
+/* Exercise text */
+#routine td:nth-child(2) {
+    padding-left: 1rem;
+    font-weight: 500;
+}
+
+/* Submit button */
+#submit {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#submit:hover {
+    background-color: #005bb5;
+}
+
+#submit:active {
+    background-color: #004999;
+}
+
+/* Optional visual change when an item is checked */
+.checkbox.checked {
+    color: green;
+}
+
+/* Optionally gray out the exercise text next to it */
+.checkbox.checked + td {
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    .checkbox {
+        width: 32px;
+        height: 32px;
+        font-size: 1.4rem;
+        line-height: 32px;
+    }
+
+    #submit {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}

@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/complete', (req, res) => {
+    res.render('finished')
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

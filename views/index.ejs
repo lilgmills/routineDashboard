@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <p>wahoo! Here is your web page</p>
+    <h1 id="page-header">Today's date is </h1>
+    <table id="routine">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="checkbox"> </div>
+                </td>
+                <td id="1">Exercise 1</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="checkbox"> </div>
+                </td>
+                <td id="2">Exercise 2</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="checkbox"> </div>
+                </td>
+                <td id="3">Exercise 3</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <form action="/complete">
+        <button id="submit">
+            Finish
+        </button>
+    </form>
 </body>
-<script src="/js/script.js"></script>
+<script type="module" src="/js/script.js"></script>
 </html>

@@ -1,7 +1,9 @@
+import {getChoices} from "./getChoices.js";
+
 const MONTH = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const allExercisesString = "gate pose stretch, neutral pelvis stretch, traps stretch, glute bridge, lunge variation, lying leg lift, fire hydrant, donkey kick, piriformis pigeon stretch, quadriceps stretch, butt-kick, knee hug stretch, supine hip flexor stretch, half-kneeling hip flexor stretch, single-leg romanian deadlift, standing calf stretch, leg swing, lunge, bird dog, hollow body hold, forearm plank, dead bug, clamshell, psoas muscle release, lateral band walk, lock clams, side plank clamshell, upper trapezius stretch, levator scapulae stretch, sternocleidomastoid stretch"
-
+const allExercisesArray = allExercisesString.split(", ");
 
 // milliseconds since 1970
 const utcTimestamp = Date.now();
@@ -26,9 +28,24 @@ const options = {
 
 const formattedDate = new Intl.DateTimeFormat('en-US', options).format(todaysDate);
 
-console.log(`Today is ${MONTH[announce.month]} ${announce.day}, ${announce.year}`)
+const ISO_data = isoStrings(todaysDate);
+
+const dateAnnouncement = `Today is ${MONTH[announce.month]} ${announce.day}, ${announce.year}`
+
+const dateSeed = `${ISO_data.year}-${ISO_data.month}-${ISO_data.day}`
+
+console.log(`${dateAnnouncement}. Aka ${dateSeed}`)
 
 console.log(`Current date and time in ${target_tz}: ${formattedDate}`);
+
+const selection = getChoices(dateSeed, allExercisesArray);
+
+console.log("Exercises:\n", selection);
+
+document.getElementById("page-header").innerHTML = dateAnnouncement;
+document.getElementById("1").innerHTML = selection[0];
+document.getElementById("2").innerHTML = selection[1];
+document.getElementById("3").innerHTML = selection[2];
 
 function convertToCalender(a_date) {
     return {
@@ -37,3 +54,33 @@ function convertToCalender(a_date) {
         year: a_date.getFullYear()
     }
 }
+
+function isoStrings(formatDate) {
+    return {
+        year: String(formatDate.getFullYear()),
+        month: String(formatDate.getMonth() + 1).padStart(2, '0'),
+        day: String(formatDate.getDate()).padStart(2, '0')
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.checkbox');
+
+    checkboxes.forEach(box => {
+        box.textContent = '\u00A0';
+
+        box.addEventListener('click', () => {
+            const isChecked = box.textContent === '✓';
+            box.textContent = isChecked ? '\u00A0' : '✓';
+            box.classList.toggle('checked', !isChecked);
+
+            // Get the exercise cell in the same row
+            const row = box.closest('tr');
+            const exerciseCell = row.querySelector('td:nth-child(2)');
+            if (exerciseCell) {
+                exerciseCell.style.color = isChecked ? '#333' : '#999';
+                exerciseCell.style.textDecoration = isChecked ? 'none' : 'line-through';
+            }
+        });
+    });
+});
