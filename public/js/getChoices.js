@@ -86,10 +86,17 @@ export function getChoices(today, items) {
 
     // TEST_PRNG();
 
+    const reject = (chosen, idx) => idx == chosen[0] || idx == chosen[1];
+
     const choices = [];
+    const indices = [];
     while (choices.length < 3) {
-        const index = getUniformRandomIndex(items.length, prng);
+        let index = getUniformRandomIndex(items.length, prng);
+        while(reject(indices, index)) {
+            index = getUniformRandomIndex(items.length, prng);
+        }
         choices.push(items[index]);
+        indices.push(index);
     }
     return choices;
 }
