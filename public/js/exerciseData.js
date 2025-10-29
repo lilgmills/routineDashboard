@@ -100,7 +100,7 @@ export const exercises = [
         url : "https://www.youtube.com/watch?v=i0w7KczRvkk", 
     },
     {
-        name : "lock clams", 
+        name : "lock clam", 
         url : "https://www.youtube.com/watch?v=V-qC9Ct2lxg", 
     },
     {
@@ -124,7 +124,7 @@ export const exercises = [
         url : "https://www.youtube.com/watch?v=DIj6CibnWOA", 
     },
     {
-        name : "bicycle crunches", 
+        name : "bicycle crunch", 
         url : "https://www.youtube.com/watch?v=PAEo-zRSanM",
     },
 ]
