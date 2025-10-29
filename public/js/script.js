@@ -2,8 +2,10 @@ import {getChoices} from "./getChoices.js";
 
 const MONTH = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const allExercisesString = "gate pose stretch, neutral pelvis stretch, traps stretch, glute bridge, lunge variation, lying leg lift, fire hydrant, donkey kick, piriformis pigeon stretch, quadriceps stretch, butt-kick, knee hug stretch, supine hip flexor stretch, half-kneeling hip flexor stretch, single-leg romanian deadlift, standing calf stretch, leg swing, lunge, bird dog, hollow body hold, forearm plank, dead bug, clamshell, psoas muscle release, lateral band walk, lock clams, side plank clamshell, upper trapezius stretch, levator scapulae stretch, sternocleidomastoid stretch"
+const allExercisesString = "gate pose stretch, neutral pelvis stretch, traps stretch, glute bridge, lunge variation, side lying leg lift, fire hydrant, donkey kick, piriformis pigeon stretch, quadriceps stretch, butt-kick, knee hug stretch, supine hip flexor stretch, half-kneeling hip flexor stretch, single-leg romanian deadlift, standing calf stretch, leg swing, lunge, bird dog, hollow body hold, forearm plank, dead bug, clamshell, psoas muscle release, lateral band walk, lock clams, side plank clamshell, upper trapezius stretch, levator scapulae stretch, sternocleidomastoid stretch"
 const allExercisesArray = allExercisesString.split(", ");
+
+import { exercises } from "./exerciseData.js"
 
 // milliseconds since 1970
 const utcTimestamp = Date.now();
@@ -38,14 +40,19 @@ console.log(`${dateAnnouncement}. Aka ${dateSeed}`)
 
 console.log(`Current date and time in ${target_tz}: ${formattedDate}`);
 
-const selection = getChoices(dateSeed, allExercisesArray);
+const selection = getChoices(dateSeed, exercises);
 
 console.log("Exercises:\n", selection);
 
 document.getElementById("page-header").innerHTML = dateAnnouncement;
-document.getElementById("1").innerHTML = selection[0];
-document.getElementById("2").innerHTML = selection[1];
-document.getElementById("3").innerHTML = selection[2];
+document.getElementById("1").innerHTML = selection[0].name;
+document.getElementById("2").innerHTML = selection[1].name;
+document.getElementById("3").innerHTML = selection[2].name;
+
+document.getElementById("url1").href = selection[0].url;
+document.getElementById("url2").href = selection[1].url;
+document.getElementById("url3").href = selection[2].url;
+
 
 function convertToCalender(a_date) {
     return {
