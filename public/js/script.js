@@ -49,9 +49,9 @@ document.getElementById("1").innerHTML = selection[0].name;
 document.getElementById("2").innerHTML = selection[1].name;
 document.getElementById("3").innerHTML = selection[2].name;
 
-document.getElementById("url1").href = selection[0].url;
-document.getElementById("url2").href = selection[1].url;
-document.getElementById("url3").href = selection[2].url;
+document.getElementById("url1").href = `${selection[0].url}&t=${selection[0].t}`;
+document.getElementById("url2").href = `${selection[1].url}&t=${selection[1].t}`;
+document.getElementById("url3").href = `${selection[2].url}&t=${selection[2].t}`;
 
 
 function convertToCalender(a_date) {
