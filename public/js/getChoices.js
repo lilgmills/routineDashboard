@@ -2,7 +2,8 @@
 export function getChoices(today, items) {
     function getUniformRandomIndex(max, prng) {
         while (true) {
-            const val = Math.floor(prng() * 32); // 5 bits
+            const numBits = Math.ceil(Math.log2(max))
+            const val = Math.floor(prng() * 2**numBits);
             if (val < max) return val;
         }
     }
@@ -90,10 +91,12 @@ export function getChoices(today, items) {
 
     const choices = [];
     const indices = [];
+    const max = items.filter((item)=>item.date_added < today).length;
     while (choices.length < 3) {
-        let index = getUniformRandomIndex(items.length, prng);
+        let index = getUniformRandomIndex(max, prng);
         while(reject(indices, index)) {
-            index = getUniformRandomIndex(items.length, prng);
+            
+            index = getUniformRandomIndex(max, prng);
         }
         choices.push(items[index]);
         indices.push(index);
