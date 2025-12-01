@@ -213,7 +213,7 @@ export const exercises = [
         name : "reverse clamshells",
         url : "https://www.youtube.com/watch?v=jcct_gZz_CU",
         date_added : "2025-11-10",
-        t : "126",
+        t : "146",
     },
     {
         name : "fire hydrants with toe drop",
